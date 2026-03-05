@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('event_attendance', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('phone_number')->unique();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->boolean('attended')->default(false);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('event_attendance');
     }
 };

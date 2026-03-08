@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FellowshipController;
@@ -16,6 +17,10 @@ Route::get('/fellowships', [FellowshipController::class, 'index']);
 
 Route::get('/events', [EventController::class, 'index']);
 
-Route::post('/attendance', [EventAttendanceController::class, 'store']);
+Route::post('/attendances', [EventAttendanceController::class, 'store']);
 
-Route::get('/attendance', [EventAttendanceController::class, 'index']);
+Route::get('/attendances', [EventAttendanceController::class, 'index']);
+
+Route::post('/comments', [CommentController::class, 'store']);
+
+Route::get('/comments', [CommentController::class, 'index']);

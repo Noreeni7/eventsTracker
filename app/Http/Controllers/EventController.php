@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 
+use App\Http\Resources\EventResource;
+
 class EventController extends Controller
 {
     public function index() {
         $events = Event::with('fellowship')->get();
 
-        return response()->json($events);
+        return EventResource::collection($events);
     }
 }
